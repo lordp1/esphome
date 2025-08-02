@@ -526,7 +526,7 @@ void http_get_task(void *pvParameters) {
     inet_pton(AF_INET, SNAPCAST_SERVER_HOST, &(servaddr.sin_addr.s_addr));
     servaddr.sin_port = htons(SNAPCAST_SERVER_PORT);
 
-    inet_pton(AF_INET, SNAPCAST_SERVER_HOST, &(remote_ip.u_addr.ip4.addr));
+    inet_pton(AF_INET, SNAPCAST_SERVER_HOST, &(remote_ip.addr.ip4.addr));
     remote_ip.type = IPADDR_TYPE_V4;
     remotePort = SNAPCAST_SERVER_PORT;
 
