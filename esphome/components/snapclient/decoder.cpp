@@ -526,8 +526,15 @@ void http_get_task(void *pvParameters) {
     inet_pton(AF_INET, SNAPCAST_SERVER_HOST, &(servaddr.sin_addr.s_addr));
     servaddr.sin_port = htons(SNAPCAST_SERVER_PORT);
 
-    inet_pton(AF_INET, SNAPCAST_SERVER_HOST, &(remote_ip.addr.ip4.addr));
-    
+    // Set up the remote IP address using ip_addr_t
+    if (inet_pton(AF_INET, SNAPCAST_SERVER_HOST, &remote_ip) == 1) {
+      // The IP address is now set in remote_ip
+      // No need to set remote_ip.type; it's handled internally in ip_addr_t
+    } else {
+      // Handle error: invalid IP address
+    }
+
+    // Set the remote port
     remotePort = SNAPCAST_SERVER_PORT;
     
 
